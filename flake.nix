@@ -32,11 +32,13 @@
           uboot_odroid_n2 = pkgs.uboot_odroid_n2;
         };
 
-        defaultPackage = packages.odroid-n2-kernel-5-6;
+        devShell = import ./shell.nix { inherit pkgs; };
+
+        defaultPackage = packages.odroid-n2-kernel-5-4;
       }
     );
 
   # nix build
-  # nix build .#packages.aarch64-linux.odroid-n2-kernel-5-6
+  # nix build .#packages.aarch64-linux.odroid-n2-kernel-5-4
   # ...
 }
