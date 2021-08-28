@@ -2,7 +2,7 @@
   broken ? false,
 }:
 
-with (import nixpkgs {}).stdenv.lib;
+with (import nixpkgs {}).lib;
 
 let
 
@@ -27,8 +27,8 @@ let
       select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.4.nix { inherit pkgs; });
     };
 
-    kernel_5_6 = mkJob {
-      select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.6.nix { inherit pkgs; });
+    kernel_5_10 = mkJob {
+      select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.10.nix { inherit pkgs; });
     };
 
   } // (optionalAttrs (builtins.currentSystem == "x86_64-linux" || broken) rec {

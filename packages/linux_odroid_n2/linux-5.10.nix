@@ -2,7 +2,7 @@
 
 with (import ./patch/default.nix lib);
 
-let kernel-path = "${toString pkgs.path}/pkgs/os-specific/linux/kernel/linux-5.4.nix";
+let kernel-path = "${toString pkgs.path}/pkgs/os-specific/linux/kernel/linux-5.10.nix";
     kernel-pkgs = import kernel-path;
 in callPackage ./configure.nix {
 
@@ -11,12 +11,6 @@ in callPackage ./configure.nix {
   configfile = ./linux-5.4.config;
 
   kernel = callPackage kernel-pkgs {
-    kernelPatches = (patchsets [
-      "armbian/5.4"
-      "forum/5.4"
-      "libre/5.4"
-    ]);
-
     NIX_CFLAGS_COMPILE = toString [
       "-mcpu=native"
     ];

@@ -6,7 +6,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "6afba54ead2ce4cb32ffc27c3f7d7358b37697ca";  # 1 commit before removal of 5.6
+      ref = "04ac9dcd311956d1756d77f4baf9258392ee7bdd";
     };
 
     flake-utils = {
@@ -28,7 +28,7 @@
         inherit overlay;
         packages = flake-utils.lib.flattenTree {
           odroid-n2-kernel-5-4 = pkgs.linuxPackages_odroid_n2_5_4.kernel;
-          odroid-n2-kernel-5-6 = pkgs.linuxPackages_odroid_n2_5_6.kernel;
+          odroid-n2-kernel-5-10 = pkgs.linuxPackages_odroid_n2_5_10.kernel;
           uboot_odroid_n2 = pkgs.uboot_odroid_n2;
         };
 
