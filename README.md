@@ -1,3 +1,5 @@
+[experimental adaptations from @ardumont, no guarantee of stability]
+
 # Nixos sd image and mainline uboot for Odroid N2
 
 > Suitable for a server. Make sure you have your UART.
