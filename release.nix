@@ -23,9 +23,11 @@ let
 
   jobs = {
 
-    kernel_5_4 = mkJob { select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.4.nix pkgs); };
+    # kernel_5_4 = mkJob { select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.4.nix pkgs); };
 
-    kernel_5_6 = mkJob { select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.6.nix pkgs); };
+    # kernel_5_6 = mkJob { select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.6.nix pkgs); };
+
+    kernel_5_10 = mkJob { select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.10.nix pkgs); };
 
   } // (optionalAttrs (builtins.currentSystem == "x86_64-linux" || broken) rec {
 
