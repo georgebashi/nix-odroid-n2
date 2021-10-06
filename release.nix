@@ -2,8 +2,8 @@
   broken ? false,
 }:
 
-with (import nixpkgs {}).stdenv.lib;
-
+with (import nixpkgs {});
+with lib;
 let
 
   targetSystem = "aarch64-linux";

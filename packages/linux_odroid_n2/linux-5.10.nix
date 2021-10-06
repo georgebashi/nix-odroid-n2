@@ -1,6 +1,6 @@
-{ stdenv, callPackage, ubootTools, ... } @ args:
+{ stdenv, callPackage, ubootTools, lib, ... } @ args:
 
-with (import ./patch/default.nix stdenv.lib);
+with (import ./patch/default.nix lib);
 
 callPackage ./configure.nix {
 

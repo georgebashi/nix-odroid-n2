@@ -2,9 +2,10 @@
   configfile,
   ubootTools,
   stdenv,
+  lib
 }:
 
-with stdenv.lib;
+with lib;
 
 let
     inherit (kernel) modDirVersion;

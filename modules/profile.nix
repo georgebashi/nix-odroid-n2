@@ -7,7 +7,7 @@
 
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_odroid_n2_5_6;
+  boot.kernelPackages = pkgs.linuxPackages_odroid_n2_5_10;
   boot.kernelParams = [
     "no_console_suspend"
     "consoleblank=0"
@@ -31,7 +31,7 @@
 
   boot.consoleLogLevel = lib.mkDefault 7;
 
-  boot.supportedFilesystems = lib.mkForce [ "btrfs" "vfat" "cifs" ];
+  boot.supportedFilesystems = lib.mkForce [ "zfs" "vfat" "cifs" ];
 
   # Since 20.03, you must explicitly specify to use dhcp on an interface
   networking.interfaces.eth0.useDHCP = true;
