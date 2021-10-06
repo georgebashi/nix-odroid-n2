@@ -11,7 +11,6 @@ callPackage ./configure.nix {
   kernel = callPackage <nixpkgs/pkgs/os-specific/linux/kernel/linux-5.10.nix> {
     kernelPatches = (patchsets [
       "armbian/5.10"
-      "libre/5.4"
     ]);
 
     NIX_CFLAGS_COMPILE = toString [
