@@ -2,7 +2,7 @@
   configfile,
   ubootTools,
   stdenv,
-  lib,
+  lib
 }:
 
 with lib;

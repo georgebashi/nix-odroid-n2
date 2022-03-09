@@ -1,16 +1,18 @@
-{ stdenv, callPackage, ubootTools, pkgs, lib, ... } @ args:
+{ stdenv, callPackage, ubootTools, lib, ... } @ args:
 
 with (import ./patch/default.nix lib);
 
-let kernel-path = "${toString pkgs.path}/pkgs/os-specific/linux/kernel/linux-5.10.nix";
-    kernel-pkgs = import kernel-path;
-in callPackage ./configure.nix {
+callPackage ./configure.nix {
 
-  inherit stdenv ubootTools lib;
+  inherit stdenv ubootTools;
 
-  configfile = ./linux-5.4.config;
+  configfile = ./linux-5.10.config;
 
-  kernel = callPackage kernel-pkgs {
+  kernel = callPackage <nixpkgs/pkgs/os-specific/linux/kernel/linux-5.10.nix> {
+    kernelPatches = (patchsets [
+      "armbian/5.10"
+    ]);
+
     NIX_CFLAGS_COMPILE = toString [
       "-mcpu=native"
     ];

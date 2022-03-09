@@ -2,8 +2,8 @@
   broken ? false,
 }:
 
-with (import nixpkgs {}).lib;
-
+with (import nixpkgs {});
+with lib;
 let
 
   targetSystem = "aarch64-linux";
@@ -22,15 +22,7 @@ let
   ));
 
   jobs = {
-
-    kernel_5_4 = mkJob {
-      select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.4.nix { inherit pkgs; });
-    };
-
-    kernel_5_10 = mkJob {
-      select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.10.nix { inherit pkgs; });
-    };
-
+    kernel_5_10 = mkJob { select = pkgs: (pkgs.callPackage ./packages/linux_odroid_n2/linux-5.10.nix pkgs); };
   } // (optionalAttrs (builtins.currentSystem == "x86_64-linux" || broken) rec {
 
     uboot = mkJob { select = pkgs: (pkgs.callPackage ./packages/uboot_odroid_n2 pkgs); };
