@@ -4,3 +4,4 @@ result
 *.out
 .DS_Store
 **/.DS_Store
+/result-dev

@@ -5,9 +5,9 @@ let
     let
       list = import (./. + "/${branch}.nix");
     in
-      map (name: { 
-        inherit name; 
-        patch = (./. + "/${branch}/${name}.patch"); 
+      map (name: {
+        inherit name;
+        patch = (./. + "/${branch}/${name}.patch");
       }) list;
   concat = lib.foldr (a: b: a ++ b) [];
 in

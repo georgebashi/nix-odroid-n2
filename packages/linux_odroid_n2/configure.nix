@@ -2,9 +2,10 @@
   configfile,
   ubootTools,
   stdenv,
+  lib,
 }:
 
-with stdenv.lib;
+with lib;
 
 let
     inherit (kernel) modDirVersion;
@@ -24,7 +25,7 @@ let
 
         make $makeFlags "''${makeFlagsArray[@]}" mrproper
         make $makeFlags "''${makeFlagsArray[@]}" KCONFIG_ALLCONFIG=${configfile} allnoconfig
-        
+
         runHook postConfigure
         make $makeFlags "''${makeFlagsArray[@]}" prepare
         actualModDirVersion="$(cat $buildRoot/include/config/kernel.release)"
@@ -37,7 +38,7 @@ let
         cd $buildRoot
         '';
     })));
-in 
+in
 overrideDerivation configuredKernel (old: {
     # make sure u-boot's tools are on the path so that 'kernel-odroidn2-current.patch' can use 'mkimage' for creating a dtbo
     # actually want "stdenv.hostPlatform.platform.kernelTarget", but don't know how to set it
